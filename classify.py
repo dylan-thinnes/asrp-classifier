@@ -2,10 +2,13 @@ from scipy import ndimage
 import numpy as np
 import imageio
 
+DEBUG=False
+
 # EXTRACTING THE FEATURES OF AN IMAGE AT A PATH
 # Return a dictionary expressing the extracted values of the path & some
 # debugging info
 def extract_features(path):
+    print("Handling '" + path + "'...")
     original = imageio.imread(path);
     (x,y) = get_center(original)
     (r,g,b) = check_color(original, x, y)
@@ -35,6 +38,10 @@ def get_center(image):
     maximized = max_channel(original)
     masked = filter_by_trough(maximized)
     (y,x) = ndimage.measurements.center_of_mass(masked)
+    global DEBUG;
+    if (DEBUG):
+        print("X: " + str(int(x)))
+        print("Y: " + str(int(y)))
     return (int(x),int(y))
 
 # Obtaining individual RGB channels
@@ -87,6 +94,11 @@ def check_color(original, x, y):
     ru = np.nanmean(map_to_nan(r))
     gu = np.nanmean(map_to_nan(g))
     bu = np.nanmean(map_to_nan(b))
+    global DEBUG;
+    if (DEBUG):
+        print("Red:   " + str(ru))
+        print("Green: " + str(gu))
+        print("Blue:  " + str(bu))
     return (ru,gu,bu)
 
 # Producing a disc-shaped mask at coords (b,a) with radius r on image with
