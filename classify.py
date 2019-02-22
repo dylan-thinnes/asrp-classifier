@@ -2,6 +2,20 @@ from scipy import ndimage
 import numpy as np
 import imageio
 
+# EXTRACTING THE FEATURES OF AN IMAGE AT A PATH
+def extract_features(path):
+    original = imageio.imread(path);
+    (x,y) = get_center(original)
+    (r,g,b) = check_color(original, x, y)
+    return {
+        "r":r,
+        "g":g,
+        "b":b,
+        "x":x,
+        "y":y,
+        "path":path
+    }
+
 # FIND THE CENTER (THE POINT OF INTEREST) OF THE DIE
 def get_center(image):
     maximized = max_channel(original)
