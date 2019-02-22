@@ -118,3 +118,19 @@ def disc_mask(b,a,r,w,h):
 def map_to_nan(array):
     return np.where(array == 0, np.NaN, array)
 
+# MAIN
+
+# Run feature extraction on preclassified 4's & 3's, 
+# write to tagged.json
+if (__name__ == "__main__"):
+    all_4443_4 = glob("../pictures/4443/4/*")
+    all_4443_3 = glob("../pictures/4443/3/*")
+
+    DEBUG = True
+    MARK_CENTER = True
+    s3 = list(map(extract_features_tagged([4,4,4,3], 4), all_4443_4))
+    s4 = list(map(extract_features_tagged([4,4,4,3], 3), all_4443_3))
+    data = s3 + s4
+    h = open("./tagged.json", "w")
+    json.dump(data, h)
+    h.close()
