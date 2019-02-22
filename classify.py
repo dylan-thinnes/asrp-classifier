@@ -2,6 +2,7 @@ from scipy import ndimage
 import numpy as np
 import imageio
 
+# FIND THE CENTER (THE POINT OF INTEREST) OF THE DIE
 def get_center(image):
     maximized = max_channel(original)
     masked = filter_by_trough(maximized)
@@ -47,6 +48,7 @@ def histogram_trough(image):
 
     return best_mean;
 
+# CHECKING THE COLOR OF AN POINT OF INTEREST ON THE DIE
 # Summing up all color values at a center to create a feature vector
 def check_color(original, x, y):
     (height, width, _) = original.shape
@@ -61,6 +63,7 @@ def check_color(original, x, y):
 
 # Producing a disc-shaped mask at coords (b,a) with radius r on image with
 # dimensions w,h
+# Lets us filter to only get results at point of interest
 def disc_mask(b,a,r,w,h):
     y,x = np.ogrid[-a:h-a, -b:w-b]
     mask = x*x + y*y <= r*r
