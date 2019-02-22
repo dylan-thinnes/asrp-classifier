@@ -2,6 +2,10 @@ from scipy import ndimage
 import numpy as np
 import imageio
 
+import json
+from os.path import split
+from glob import glob
+
 DEBUG=False
 
 # EXTRACTING THE FEATURES OF AN IMAGE AT A PATH
@@ -35,7 +39,7 @@ def extract_features_tagged(die, side):
 
 # FIND THE CENTER (THE POINT OF INTEREST) OF THE DIE
 def get_center(image):
-    maximized = max_channel(original)
+    maximized = max_channel(image)
     masked = filter_by_trough(maximized)
     (y,x) = ndimage.measurements.center_of_mass(masked)
     global DEBUG;
