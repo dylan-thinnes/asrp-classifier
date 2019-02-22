@@ -1,7 +1,9 @@
+# Image manipulation & classification
 from scipy import ndimage
 import numpy as np
 import imageio
 
+# Filename manipulation
 import json
 from os.path import split
 from glob import glob
