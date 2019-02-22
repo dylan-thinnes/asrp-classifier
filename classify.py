@@ -58,3 +58,8 @@ def disc_mask(b,a,r,w,h):
     mask = x*x + y*y <= r*r
 
     return np.where(mask == True, 1, 0).astype(np.uint8)
+
+# Turn zero-values to NaN so that they don't contribute to value averages
+def map_to_nan(array):
+    return np.where(array == 0, np.NaN, array)
+
