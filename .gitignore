@@ -1,0 +1,6 @@
+# Vim hidden files
+*.swp
+*.swo
+
+# Pyc files
+*.pyc
