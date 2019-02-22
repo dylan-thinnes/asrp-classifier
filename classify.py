@@ -30,6 +30,11 @@ def max_channel(original):
 
     return max
 
+# Filter all pixels not meeting the threshold to black, otherwise white
+def filter_by_trough(image):
+    mean = histogram_trough(image)
+    return np.where(image > mean, True, False)
+
 # Get the threshold between black and brightly colored pixels
 def histogram_trough(image):
     histogram = np.histogram(image,20)
