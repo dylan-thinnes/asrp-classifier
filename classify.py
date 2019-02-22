@@ -30,3 +30,12 @@ def max_channel(original):
 
     return max
 
+# Get the threshold between black and brightly colored pixels
+def histogram_trough(image):
+    histogram = np.histogram(image,20)
+    best_mean_ii = np.argmin(histogram[0])
+    best_mean = histogram[1][best_mean_ii]
+    print("Best mean found: " + str(best_mean))
+
+    return best_mean;
+
