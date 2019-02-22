@@ -93,13 +93,15 @@ def histogram_trough(image):
 # Summing up all color values at a center to create a feature vector
 def check_color(original, x, y):
     (height, width, _) = original.shape
-    disc = disc_mask(x,y,50,width,height)
-    r = disc * get_r(original)
-    g = disc * get_g(original)
-    b = disc * get_b(original)
-    ru = np.nanmean(map_to_nan(r))
-    gu = np.nanmean(map_to_nan(g))
-    bu = np.nanmean(map_to_nan(b))
+    disc = to_pixel_triples(disc_mask(x,y,50,width,height))
+    disc_nan = map_to_nan(disc)
+    filtered = disc_nan * original
+    r = get_r(filtered)
+    g = get_g(filtered)
+    b = get_b(filtered)
+    ru = np.nanmean(r)
+    gu = np.nanmean(g)
+    bu = np.nanmean(b)
     global DEBUG;
     if (DEBUG):
         print("Red:   " + str(ru))
@@ -119,6 +121,12 @@ def disc_mask(b,a,r,w,h):
 # Turn zero-values to NaN so that they don't contribute to value averages
 def map_to_nan(array):
     return np.where(array == 0, np.NaN, array)
+
+# Turning a an n-dim array into an n-dim array of triples
+# Turns bw masks into images w/ rgb values, so dot prod can be used
+def to_pixel_triples(array):
+    (a,b) = array.shape
+    return np.transpose([array,array,array], (1,2,0))
 
 # MAIN
 
