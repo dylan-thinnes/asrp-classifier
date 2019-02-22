@@ -3,6 +3,8 @@ import numpy as np
 import imageio
 
 # EXTRACTING THE FEATURES OF AN IMAGE AT A PATH
+# Return a dictionary expressing the extracted values of the path & some
+# debugging info
 def extract_features(path):
     original = imageio.imread(path);
     (x,y) = get_center(original)
