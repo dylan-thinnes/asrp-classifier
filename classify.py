@@ -49,7 +49,15 @@ def histogram_trough(image):
 
 # Summing up all color values at a center to create a feature vector
 def check_color(original, x, y):
-    return
+    (height, width, _) = original.shape
+    disc = disc_mask(x,y,50,width,height)
+    r = disc * get_r(original)
+    g = disc * get_g(original)
+    b = disc * get_b(original)
+    ru = np.nanmean(map_to_nan(r))
+    gu = np.nanmean(map_to_nan(g))
+    bu = np.nanmean(map_to_nan(b))
+    return (ru,gu,bu)
 
 # Producing a disc-shaped mask at coords (b,a) with radius r on image with
 # dimensions w,h
