@@ -50,3 +50,11 @@ def histogram_trough(image):
 # Summing up all color values at a center to create a feature vector
 def check_color(original, x, y):
     return
+
+# Producing a disc-shaped mask at coords (b,a) with radius r on image with
+# dimensions w,h
+def disc_mask(b,a,r,w,h):
+    y,x = np.ogrid[-a:h-a, -b:w-b]
+    mask = x*x + y*y <= r*r
+
+    return np.where(mask == True, 1, 0).astype(np.uint8)
