@@ -47,3 +47,6 @@ def histogram_trough(image):
 
     return best_mean;
 
+# Summing up all color values at a center to create a feature vector
+def check_color(original, x, y):
+    return
