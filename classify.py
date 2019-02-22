@@ -16,6 +16,18 @@ def extract_features(path):
         "path":path
     }
 
+# Curried function - allows us to apply tags to all features extracted w/ the
+# resulting function
+def extract_features_tagged(die, side):
+    if (side not in die):
+        raise Exception("Specified side '" + str(side) + "' is not in die " + str(die));
+    def f(filename):
+        result = extract_features(filename)
+        result["die"] = die
+        result["side"] = side
+        return result
+    return f
+
 # FIND THE CENTER (THE POINT OF INTEREST) OF THE DIE
 def get_center(image):
     maximized = max_channel(original)
