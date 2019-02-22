@@ -3,7 +3,10 @@ import numpy as np
 import imageio
 
 def get_center(image):
-    return
+    maximized = max_channel(original)
+    masked = filter_by_trough(maximized)
+    (y,x) = ndimage.measurements.center_of_mass(masked)
+    return (int(x),int(y))
 
 # Obtaining individual RGB channels
 def get_r(original):
