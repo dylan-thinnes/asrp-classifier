@@ -116,7 +116,7 @@ def disc_mask(b,a,r,w,h):
     y,x = np.ogrid[-a:h-a, -b:w-b]
     mask = x*x + y*y <= r*r
 
-    return np.where(mask == True, 1, 0).astype(np.uint8)
+    return np.where(mask, 1, 0).astype(np.uint8)
 
 # Turn zero-values to NaN so that they don't contribute to value averages
 def map_to_nan(array):
