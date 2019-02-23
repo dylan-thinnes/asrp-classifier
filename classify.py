@@ -10,6 +10,13 @@ from glob import glob
 
 DEBUG=False
 
+# MAIN
+
+# Run feature extraction on preclassified 4's & 3's, 
+# write to tagged.json
+def main():
+    return
+
 # Finds all images for a die spec, extracts their features.
 # e.g. train_die([4,4,4,3])
 def train_die(die):
@@ -147,9 +154,5 @@ def to_pixel_triples(array):
     (a,b) = array.shape
     return np.transpose([array,array,array], (1,2,0))
 
-# MAIN
-
-# Run feature extraction on preclassified 4's & 3's, 
-# write to tagged.json
-if (__name__ == "__main__"):
-    return
+# RUNNING MAIN
+if (__name__ == "__main__"): main()
