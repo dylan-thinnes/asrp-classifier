@@ -10,6 +10,18 @@ from glob import glob
 
 DEBUG=False
 
+# Finds all images for a die spec, extracts their features.
+# e.g. train_die([4,4,4,3])
+def train_die(die):
+    distinct_sides = list(set(die))
+    training_results = []
+    for side in distinct_sides:
+        paths = image_paths(die, side)
+        print(paths)
+        for path in paths:
+            training_results += extract_features_tagged(die,side)(path)
+    return training_results
+
 # Finds paths to all images for a specific side of a specific die
 def image_paths(die, side):
     die_name = "".join(str(x) for x in die)
