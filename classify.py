@@ -5,7 +5,7 @@ import imageio
 
 # Filename manipulation
 import json
-from os.path import split
+from os.path import split, splitext
 from glob import glob
 
 DEBUG=False
@@ -30,7 +30,10 @@ def train_die(die):
     for side in distinct_sides:
         paths = image_paths(die, side)
         for path in paths:
-            training_results.append(extract_features_tagged(die,side)(path))
+            result = extract_features_tagged(die,side)(path)
+            json_path = splitext(path)[0] + ".json"
+            log_to_json(json_path, result)
+            training_results.append(result)
     return training_results
 
 # Finds paths to all images for a specific side of a specific die
@@ -39,6 +42,12 @@ def image_paths(die, side):
     side_name = str(side)
     all_images = glob("./pictures/" + die_name + "/" + side_name + "/*")
     return all_images
+
+# Log the result of a function to a json file
+def log_to_json(json_path, result):
+    h = open(json_path, "w")
+    json.dump(result, h)
+    h.close()
 
 # EXTRACTING THE FEATURES OF AN IMAGE AT A PATH
 # Return a dictionary expressing the extracted values of the path & some
