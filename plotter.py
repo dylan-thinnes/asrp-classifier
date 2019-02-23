@@ -5,11 +5,23 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 
 import json
 from glob import glob
+import sys
 
 def main():
-    vectors = get_training_vectors([4,4,4,3])
-    # plot_dendrogram(vectors)
-    # plot_3d(vectors)
+    plot_type = "dendrogram"
+    if (len(sys.argv) > 1):
+        plot_type = sys.argv[1]
+
+    if (plot_type == "dendrogram"):
+        vectors = get_training_vectors([4,4,4,3])
+        plot_dendrogram(vectors)
+    elif (plot_type == "3d"):
+        vectors = get_training_vectors([4,4,4,3])
+        plot_3d(vectors)
+    else:
+        print("Invalid plotting argument \"" + plot_type + "\" supplied.")
+
+
 
 # Cluster rgb vectors using cosine distance, show in a dendrogram
 def plot_dendrogram(vectors):
