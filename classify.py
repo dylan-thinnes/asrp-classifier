@@ -133,8 +133,8 @@ def to_pixel_triples(array):
 # Run feature extraction on preclassified 4's & 3's, 
 # write to tagged.json
 if (__name__ == "__main__"):
-    all_4443_4 = glob("../pictures/4443/4/*")
-    all_4443_3 = glob("../pictures/4443/3/*")
+    all_4443_4 = glob("./pictures/4443/4/*")
+    all_4443_3 = glob("./pictures/4443/3/*")
 
     DEBUG = True
     MARK_CENTER = True
