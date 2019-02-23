@@ -6,6 +6,10 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 import json
 from glob import glob
 
+# Plotting rgb vectors in 3d to see cosine distance yourself
+def plot_3d(vectors):
+    plot_vectors(vectors)
+
 def plot_vector(ax, x, y, z):
     ax.plot([0,x],[0,y],[0,z], color=(x / 255, y / 255, z / 255))
 
