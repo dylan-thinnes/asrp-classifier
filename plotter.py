@@ -4,6 +4,7 @@ from mpl_toolkits.mplot3d import proj3d
 from scipy.cluster.hierarchy import dendrogram, linkage
 
 import json
+from glob import glob
 
 def plot_vector(ax, x, y, z):
     ax.plot([0,x],[0,y],[0,z], color=(x / 255, y / 255, z / 255))
@@ -31,3 +32,6 @@ def get_vector(path):
     vector = features_to_vector(item)
     return vector
 
+def get_training_features_paths(die):
+    die_name = "".join(str(x) for x in die)
+    return glob("./pictures/" + die_name + "/*/*.json")
