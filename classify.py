@@ -10,6 +10,13 @@ from glob import glob
 
 DEBUG=False
 
+# Finds paths to all images for a specific side of a specific die
+def image_paths(die, side):
+    die_name = "".join(str(x) for x in die)
+    side_name = str(side)
+    all_images = glob("./pictures/" + die_name + "/" + side_name + "/*")
+    return all_images
+
 # EXTRACTING THE FEATURES OF AN IMAGE AT A PATH
 # Return a dictionary expressing the extracted values of the path & some
 # debugging info
