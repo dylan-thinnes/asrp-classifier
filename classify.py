@@ -20,11 +20,11 @@ def main():
 # Finds all images for a die spec, extracts their features.
 # e.g. train_die([4,4,4,3])
 def train_die(die):
+    print("Crunching training data for die " + str(die))
     distinct_sides = list(set(die))
     training_results = []
     for side in distinct_sides:
         paths = image_paths(die, side)
-        print(paths)
         for path in paths:
             training_results.append(extract_features_tagged(die,side)(path))
     return training_results
