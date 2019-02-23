@@ -6,6 +6,13 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 import json
 from glob import glob
 
+# Cluster rgb vectors using cosine distance, show in a dendrogram
+def plot_dendrogram(vectors):
+    Z = linkage(vectors, metric="cosine")
+    fig = plt.figure(figsize=(25, 10))
+    dn = dendrogram(Z)
+    plt.show()
+
 # Plotting rgb vectors in 3d to see cosine distance yourself
 def plot_3d(vectors):
     plot_vectors(vectors)
