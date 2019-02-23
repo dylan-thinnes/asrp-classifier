@@ -19,13 +19,13 @@ def plot_vectors(vectors):
     plt.show()
 
 # TAGGED ITEMS MANIPULATION
-def tagged_to_vector(item):
+def features_to_vector(item):
     return (item["r"], item["g"], item["b"])
 
 def get_vector(path):
     h = open(path, "r")
-    item = json.load(h)
+    features = json.load(h)
     h.close()
-    vector = tagged_to_vector(item)
+    vector = features_to_vector(item)
     return vector
 
