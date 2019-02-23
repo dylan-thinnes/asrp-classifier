@@ -6,6 +6,11 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 import json
 from glob import glob
 
+def main():
+    vectors = get_training_vectors([4,4,4,3])
+    # plot_dendrogram(vectors)
+    # plot_3d(vectors)
+
 # Cluster rgb vectors using cosine distance, show in a dendrogram
 def plot_dendrogram(vectors):
     Z = linkage(vectors, metric="cosine")
@@ -49,3 +54,6 @@ def get_training_features_paths(die):
 
 def get_training_vectors(die):
     return [get_vector(path) for path in get_training_features_paths(die)]
+
+# RUN MAIN
+if (__name__ == "__main__"): main()
