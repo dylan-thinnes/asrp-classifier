@@ -15,6 +15,10 @@ DEBUG=False
 # Run feature extraction on preclassified 4's & 3's, 
 # write to tagged.json
 def main():
+    training_data = train_die([4,4,4,3])
+    h = open("./tagged.json", "w")
+    json.dump(training_data, h)
+    h.close()
     return
 
 # Finds all images for a die spec, extracts their features.
