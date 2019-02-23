@@ -29,7 +29,7 @@ def get_vector(path):
     h = open(path, "r")
     features = json.load(h)
     h.close()
-    vector = features_to_vector(item)
+    vector = features_to_vector(features)
     return vector
 
 def get_training_features_paths(die):
