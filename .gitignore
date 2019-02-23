@@ -4,3 +4,7 @@
 
 # Pyc files
 *.pyc
+
+# Ignore files containing extracted features
+pictures/**/*.json
+
