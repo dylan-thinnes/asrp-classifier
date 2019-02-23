@@ -3,6 +3,8 @@ import numpy as np
 from mpl_toolkits.mplot3d import proj3d
 from scipy.cluster.hierarchy import dendrogram, linkage
 
+import json
+
 def plot_vector(ax, x, y, z):
     ax.plot([0,x],[0,y],[0,z], color=(x / 255, y / 255, z / 255))
 
