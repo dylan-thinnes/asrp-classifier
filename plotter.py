@@ -35,3 +35,6 @@ def get_vector(path):
 def get_training_features_paths(die):
     die_name = "".join(str(x) for x in die)
     return glob("./pictures/" + die_name + "/*/*.json")
+
+def get_training_vectors(die):
+    return [get_vector(path) for path in get_training_features_paths(die)]
