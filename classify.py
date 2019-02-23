@@ -26,7 +26,7 @@ def train_die(die):
         paths = image_paths(die, side)
         print(paths)
         for path in paths:
-            training_results += extract_features_tagged(die,side)(path)
+            training_results.append(extract_features_tagged(die,side)(path))
     return training_results
 
 # Finds paths to all images for a specific side of a specific die
