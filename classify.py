@@ -16,9 +16,7 @@ DEBUG=False
 # write to tagged.json
 def main():
     training_data = train_die([4,4,4,3])
-    h = open("./tagged.json", "w")
-    json.dump(training_data, h)
-    h.close()
+    print(training_data)
     return
 
 # Finds all images for a die spec, extracts their features.
