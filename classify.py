@@ -38,7 +38,7 @@ def train_die(die):
 def image_paths(die, side):
     die_name = "".join(str(x) for x in die)
     side_name = str(side)
-    all_images = glob("./pictures/" + die_name + "/" + side_name + "/*")
+    all_images = glob("./pictures/" + die_name + "/" + side_name + "/*.JPG")
     return all_images
 
 # Log the result of a function to a json file
