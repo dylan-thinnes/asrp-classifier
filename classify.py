@@ -43,9 +43,8 @@ def image_paths(die, side):
 
 # Log the result of a function to a json file
 def log_to_json(json_path, result):
-    h = open(json_path, "w")
-    json.dump(result, h)
-    h.close()
+    with open(json_path, "w") as h:
+        json.dump(result, h)
 
 # EXTRACTING THE FEATURES OF AN IMAGE AT A PATH
 # Return a dictionary expressing the extracted values of the path & some
