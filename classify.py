@@ -1,7 +1,7 @@
 # Image manipulation & classification
-from scipy import ndimage
 import numpy as np
 import imageio
+from scipy import ndimage
 
 # Filename manipulation
 import json
